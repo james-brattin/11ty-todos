@@ -1,0 +1,21 @@
+---
+permalink: /todos/
+title: My todos
+---
+
+<p>Todos</p>
+
+<hr>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pocketbase/0.21.1/pocketbase.umd.js" integrity="sha512-VVGcB9we5vwZv7dqLv0OZ8Oui9sOTstPP2bBSG9PBq5ONspOccU/f+IgAppdo3RmFUfIDSy+7XSHQ9AmSAagfw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const url = 'https://lose-primitive.pockethost.io/'
+    const client = new PocketBase(url)
+
+    const records = await client.collection('posts').getFullList({
+      sort: '-created',
+    });
+    console.log(records)
+  }, false);
+</script>
